@@ -4,6 +4,7 @@ import joblib
 import numpy as np
 import pandas as pd
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, mean_squared_error
+import tensorflow as tf
 
 def save_confution_matrix(cm, file_path):
     plt.figure(figsize=(10, 7))
@@ -23,7 +24,7 @@ def save_dataframe_as_csv(df, file_path):
 
 
 def save_model(model, path):
-    joblib.dump(model, path)
+    model.save(path)
     
 
 def load_model(path):
@@ -54,3 +55,6 @@ def get_accuracy(y_test, y_pred):
     
 def convert_dataframe_to_numpy_array(dataframe):
     return np.array(dataframe)  
+
+def test_gpu():
+    print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
