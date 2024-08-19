@@ -10,10 +10,27 @@ from nltk.tokenize import word_tokenize
 import nltk
 nltk.download('punkt')
 
-def split_data(x, y, test_size=.2):
-    # Split the data
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
-    return x_train, x_test, y_train, y_test
+def split_data(x, y,  test_size=0.15,  val_size=0.15, random_state=50):
+    x = x.toarray()
+    x = pd.DataFrame(x)
+    y = pd.DataFrame(y, columns=['label'])
+    
+    # Split the data into train+val and test
+    x_train_val, x_test, y_train_val, y_test = train_test_split(x, y, 
+                                                                test_size=test_size, random_state=random_state)
+    # Calculate the relative validation size with respect to the train+val set
+    val_size_relative = val_size / (1 - test_size)
+    
+    # Split the train+val set into train and validation sets
+    x_train, x_val, y_train, y_val = train_test_split(x_train_val, y_train_val, 
+                                                      test_size=val_size_relative, random_state=random_state)
+    
+    return x_train, x_test, x_val, y_train, y_val, y_test
+
+# def split_data(x, y, test_size=.2):
+#     # Split the data
+#     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+#     return x_train, x_test, y_train, y_test
 
 
 def convert_splitted_data_to_dataframe(X_train_dense, y_train, X_test_dense, y_test):
