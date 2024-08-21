@@ -11,10 +11,11 @@ import nltk
 nltk.download('punkt')
 
 def split_data(x, y,  test_size=0.15,  val_size=0.15, random_state=50):
-    x = x.toarray()
-    x = pd.DataFrame(x)
+    # x = x.toarray()
+    # x = pd.DataFrame(x)
+    # y = pd.DataFrame(y, columns=['label'])
+    x = pd.DataFrame.sparse.from_spmatrix(x)  # Keep as a sparse DataFrame
     y = pd.DataFrame(y, columns=['label'])
-    
     # Split the data into train+val and test
     x_train_val, x_test, y_train_val, y_test = train_test_split(x, y, 
                                                                 test_size=test_size, random_state=random_state)
