@@ -27,9 +27,13 @@ def save_model(model, path):
     model.save(path)
     
 
-def load_model(path):
-    loaded_model = joblib.load(path)
-    return loaded_model
+def load_saved_model(path):
+    try:
+        model = tf.keras.models.load_model(path)
+        return model
+    except Exception as e:
+        print(f"Error loading model: {e}")
+        return None
 
 def load_data(path):
     return pd.read_csv(path)

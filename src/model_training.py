@@ -6,12 +6,12 @@ from tensorflow.keras.regularizers import l2
 
 def get_untrained_custom_model(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'],x_train=0):
     model = Sequential([
-    Dense(8, activation='relu', input_shape=(x_train.shape[1],), kernel_regularizer=l2(0.001)),
-    # Dropout(0.5),
+    Dense(6, activation='relu', input_shape=(x_train.shape[1],), kernel_regularizer=l2(0.001)),
+    Dropout(0.5),
     # Dense(32, activation='relu'),
     # Dense(32, activation='relu'),
     # Dense(64, activation='relu'),
-    Dropout(0.25),
+    # Dropout(0.25),
     # Dense(128, activation='relu'),
     # Dense(64, activation='relu'),
 
