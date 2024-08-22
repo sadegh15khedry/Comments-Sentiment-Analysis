@@ -1,102 +1,126 @@
 # Comments Sentiment Analysis
 
-## Overview
 
+## Introduction
 Comments Sentiment Analysis is a project focused on analyzing the sentiment of user comments. It utilizes natural language processing (NLP) techniques to classify comments as positive, negative, or neutral. This project aims to provide insights into user opinions and feedback by automatically categorizing the sentiment of their comments.
 
 ## Table of Contents
 
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-  - [Prerequisites](#prerequisites)
-  - [Clone the Repository](#clone-the-repository)
-  - [Setup the Environment](#setup-the-environment)
-  - [Run the Application](#run-the-application)
-- [Usage](#usage)
-- [Known Issues](#known-issues)
-- [Future Plans](#future-plans)
-- [Contributing](#contributing)
+
+- [Directory Structure](#directory-structure)
+- [Files and Functions](#files-and-functions)
+- [Dataset](#dataset)
+- [Model Performance](#model-performance)
+- [Installation Guide](#installation-guide)
+- [Acknowledgments](#acknowledgments)
+- [Further Improvements](#further-improvements)
 - [License](#license)
-- [Contact](#contact)
-
-## Features
-
-- **Sentiment Classification**: Classify comments into positive, negative, or neutral sentiment categories.
-- **Data Preprocessing**: Clean and preprocess text data to prepare it for sentiment analysis.
-- **Batch Processing**: Process multiple comments at once to analyze overall sentiment trends.
 
 
-## Technologies Used
+## Directory Structure
+```
+├── src
+│ ├── utils.py
+│ ├── model_training.py
+│ ├── model_evaluation.py
+│ ├── data_preprocessing.py
+│ └── data_exploration.py
+├── notebooks
+│ ├── data_exploration.ipynb
+│ ├── data_preprocessing.ipynb
+│ ├── model_training.ipynb
+│ └── model_evaluation.ipynb
+├── environment.yml
+└── README.md
+```
 
-- Python
-- Natural Language Processing (NLP) libraries such as NLTK or spaCy
-- Machine Learning libraries such as scikit-learn
+
+## Files and Functions
+
+- `utils.py` : Utility functions for various tasks.
+- `model_training.py` : Functions for training the model.
+- `model_evaluation.py` : Functions for evaluating the model.
+- `data_preprocessing.py` : Functions for data preprocessing.
+- `data_exploration.py` : Functions for data exploration.
+- `data_exploration.ipynb`: Notebook for data exploration.
+- `data_preprocessing.ipynb`: Notebook for data preprocessing.
+- `model_training.ipynb`: Notebook for model training.
+- `model_evaluation.ipynb`: Notebook for model evaluation.
 
 
-## Installation
+## Dataset
 
-### Prerequisites
+The dataset used is the imdb comment Dataset. get the dataset using the fallowing link https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
 
-- Python 3.x
-- Virtual environment (optional but recommended)
+## Model Performance
 
-### Clone the Repository
+### Train
+- loss: 0.3185
+- accuracy: 0.9040
+  
+### Validataion
+- loss: 0.4368
+- accuracy: 0.8587
+  
+### Test
+
+```
+              precision    recall  f1-score   support
+
+           0       0.87      0.85      0.86       376
+           1       0.85      0.88      0.86       374
+
+    accuracy                           0.86       750
+   macro avg       0.86      0.86      0.86       750
+weighted avg       0.86      0.86      0.86       750
+```
+-  test_loss: 0.44
+- accuracy: 0.86
+- precision: 0.86
+- recall: 0.86
+- f1: 0.86
+  
+## Installation Guide
+
+To set up the project environment, use the `environment.yml` file to create a conda environment.
 
 1. **Clone the repository:**
-   ```
-   git clone https://github.com/sadegh15khedry/commentsSentimentAnalysis.git
-   cd commentsSentimentAnalysis
-   ```
 
-### Setup the Environment
+    ```bash
+    git clone https://github.com/sadegh15khedry/Comments-Sentiment-Analysis.git
+    cd Comments-Sentiment-Analysis
+    ```
 
-2. **Create and activate a virtual environment (optional):**
-   ```
-   python -m venv venv
-   source venv/bin/activate   # On Windows use `venv\Scripts\activate`
-   ```
+2. **Create the conda environment:**
+
+    ```bash
+    conda env create -f environment.yml
+    ```
+
+3. **Activate the conda environment:**
+
+    ```bash
+    conda activate comments
+    ```
+
+4. **Verify the installation:**
+
+    ```bash
+    python --version
+    ```
 
 
-### Run the Application
+## Acknowledgments
+- Special thanks to the developers and contributors the libraries used in this project, including NumPy, pandas, scikit-learn, Seaborn, and Matplotlib.
+- Huge thaks to contributors of the IMDB Dataset.
 
-3. **Run the sentiment analysis script:**
-   ```
-   python sentiment_analysis.py
-   ```
+## Further Improvements
 
-## Usage
+- more hyperparameter tuning to optimize the model parameters.
 
-1. **Input Comments**: Provide comments either through a text file or directly in the script.
-2. **Run Analysis**: Execute the script to analyze the sentiment of the provided comments.
-3. **View Results**: Review the sentiment classification results and visualizations.
 
-## Known Issues
-
-- This project is an initial implementation and may not handle all edge cases in text data.
-- The accuracy of the sentiment analysis depends on the quality and size of the training data.
-
-## Future Plans
-
-- **Improve Sentiment Model**: Enhance the sentiment analysis model by using more advanced machine learning algorithms and larger datasets.
-- **API Integration**: Develop a RESTful API to allow other applications to use the sentiment analysis service.
-- **Real-time Analysis**: Implement real-time sentiment analysis for streaming comments or live feedback.
-- **GUI Application**: Create a graphical user interface to make the tool more user-friendly and accessible.
-
-## Contributing
-
-Contributions are welcome! If you'd like to contribute to the project, please follow these steps:
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/YourFeature`).
-3. Commit your changes (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature/YourFeature`).
-5. Create a new Pull Request.
-
+  
 ## License
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contact
-
-For questions or inquiries, please feel free to open an issue on the GitHub repository.
